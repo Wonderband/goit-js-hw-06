@@ -2,14 +2,14 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-function createBoxes(amount) {  
-  destroyBoxes();
+let lastBoxSize = 20;
+function createBoxes(amount) {    
   let boxArea = document.querySelector('#boxes');
   for (let i = 1; i <= amount; i += 1 ) {
     let insertBox = document.createElement('div');
-    let side = 30 + (i - 1) * 10;
-    insertBox.style.height = side +'px';
-    insertBox.style.width = side + 'px';
+    lastBoxSize += i * 10;
+    insertBox.style.height = lastBoxSize +'px';
+    insertBox.style.width = lastBoxSize + 'px';
     insertBox.style.backgroundColor = getRandomHexColor();    
     boxArea.append(insertBox);    
   }
@@ -20,6 +20,7 @@ function destroyBoxes() {
   for (let i = childBoxes.length - 1;  i >= 0; i -= 1) {
     childBoxes[i].remove();    
   }  
+  lastBoxSize = 20;
 }
 
 let inputnumber;

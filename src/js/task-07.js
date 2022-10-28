@@ -1,4 +1,4 @@
 const flexSpan = document.querySelector('#text');
 document.querySelector('#font-size-control')
-.addEventListener('change', (event) =>
+.addEventListener('input', (event) =>
     flexSpan.style.fontSize = event.currentTarget.value +'px');
